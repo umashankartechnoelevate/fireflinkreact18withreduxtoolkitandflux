@@ -1,24 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { MainRoute } from "./Routes/MainRoute";
+import { MainContextProvider } from "./Context/MainContext";
+import { Provider } from "react-redux";
+import store from "./store";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    //wrapping app component within Provider so that we can able to get store data in each component as like context provider
+    <Provider store={store}>
+      <MainContextProvider>
+        <MainRoute />
+      </MainContextProvider>
+    </Provider>
   );
 }
 
