@@ -29,7 +29,7 @@ const TodoStore = Object.assign({}, EventEmitter.prototype, {
   },
 });
 dispatcher.register((action) => {
-  console.log("delete id in dispatcher where all logic is there", action.id);
+
   switch (action.type) {
     case ADD_TODO:
       todo.push({ text: action.text, completed: false });
