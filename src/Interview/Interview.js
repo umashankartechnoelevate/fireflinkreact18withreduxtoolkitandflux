@@ -1,6 +1,9 @@
+import { Button } from "@mui/material";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Interview = () => {
+  const navigate = useNavigate();
   let demoData = [
     {
       title: "big news",
@@ -37,7 +40,11 @@ export const Interview = () => {
           </div>
         );
       })}
-    </div> */}
+    </div> */}<br/><br/>
+
+      <Button variant="outlined" onClick={() => navigate("/nested")}>
+        Click here see Nested all Comp
+      </Button>
     </div>
   );
 };

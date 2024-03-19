@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { TextField } from "@mui/material";
+import ChildComp from "../ChildComp/ChildComp";
 
 const TailWindCss = () => {
+  const [dataFromChild, setDataFromChild] = useState("");
+
+  const functionFromParentComp = (data) => {
+    setDataFromChild(data);
+  };
+
   return (
     <>
       <div
@@ -58,6 +65,8 @@ const TailWindCss = () => {
           }}
         ></div>
       </div>
+      <ChildComp functionFromParentComp={functionFromParentComp} />
+      <div>Child component data is ------------{dataFromChild}</div>
     </>
   );
 };
