@@ -1,0 +1,104 @@
+
+// created partial files of scss and imported here and used //partials we can use the properties from other scss files by using this partials
+@use 'partials';
+@use "sass:math";
+@import '_partials';
+//variables
+
+//defining properties as variable and using it anywhere in any component
+$dangerColor:red; //you can use this variables in entire css file to be affect iat a time in entire app when you change property.
+
+//defining css using className and importing in the file where it required or 
+// you can include this in root file called as app.js or index.js so it will be applicable for al the comp automatically
+
+.usingClassName {
+    display: flex;
+    justify-content: center;    
+    color: white;
+    background-color: $dangerColor;
+}
+
+// we can use sass as nested like we can direct write the css for nth child in an element instead of writing multiple times
+.usingClassName {
+    background-color: lightgray;
+    h1 {
+        color: green;
+        p {
+            span {
+                color: blue;
+            }
+            .partials {
+                border:$partialUsedPropForBorder;
+                color: yellow;
+            }
+        }
+    }
+    .modules {
+        background-color:partials.$partialColor;
+        height: 30px;
+    }
+}
+
+//modules it is like partials only we can create another partial component and use those diff scss files by @use
+// .modules {
+//     background-color:partials.$partialColor;
+// }
+
+
+// Mixins are used to A mixin lets you make groups of CSS declarations that you want to reuse throughout your site. It helps keep your Sass very DRY. You can even pass in values to make your mixin more flexible. Here’s an example for theme.
+
+@mixin backGround($background:green,$border:5px solid red) {
+    background-color:$background;
+    display: flex;
+    justify-content: center;
+    border:$border;
+}
+
+.mixins {
+  @include backGround;
+    .mixins1 {
+        @include backGround($border:5px solid yellow);
+        color:white
+    }
+    .mixins2 {
+        margin: 10px 30px;
+        @include backGround($background:lightgray,$border:5px solid red)
+    }
+    .mixins3 {
+        margin: 1px 30px;
+        @include backGround($background:lightgray,$border:5px solid red)
+    }
+}
+
+// extend / inheritance
+// using extend we can use the properties of one selector into another selector
+
+%errorMessage {
+    border: 1px solid blue;
+}
+.extendInheritance {
+    display: flex;
+    justify-content: center;
+}
+
+.success {
+    @extend %errorMessage;
+    color:green;
+    border: none
+}
+
+.error {
+    @extend %errorMessage;
+    color: red;
+    border: none;
+}
+
+//operators by using operators we can handle math operation to include properties
+
+.extendInheritance[role="main"] {
+    width: math.div(600px,900px)*100%;
+}
+
+
+
+

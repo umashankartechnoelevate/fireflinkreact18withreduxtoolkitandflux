@@ -4,6 +4,8 @@ import { MainRoute } from "./Routes/MainRoute";
 import { MainContextProvider } from "./Context/MainContext";
 import { Provider } from "react-redux";
 import store from "./store";
+import sassCss from './SassAndScss/sassCss.scss'
+
 
 function App() {
   return (
